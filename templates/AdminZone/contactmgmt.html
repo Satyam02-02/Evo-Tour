@@ -1,0 +1,39 @@
+{% extends "AdminZone/AdminMaster.html" %}
+{% block content %}
+
+<h1>Contact Mgmt</h1>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <tr>
+            <th>Sr.No</th>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>M no.</th>
+            <th>Message</th>
+            <th>Delete</th>
+            <th>Response</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in data %}
+            <tr>
+            <td>{{ x.id }}</td>
+            <td>{{ x.name }}</td>
+            <td>{{ x.email }}</td>
+            <td>{{ x.mobile }}</td>
+            <td>{{ x.queue }}</td>
+            <td><a href="/delData/{{ x.id }}"><span class="fa fa-trash" style="color: red;font-size: 20px;cursor: pointer;"></span></a></td>
+            <td><a href="#"><span class="fa fa-reply" style="color: darkblue;font-size: 20px;cursor: pointer;"></span></a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+    
+{% endblock %}

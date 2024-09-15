@@ -1,0 +1,192 @@
+
+{% extends "master.html" %}
+{% block section %}
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="../static/rstyle.css">
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Log In</h3>
+                <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-secondary">Log In</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Contact Start -->
+        <div class="container-fluid contact overflow-hidden py-5">
+            <div class="container py-5">
+               <div class="bg">
+                    <div class="wrapper">
+            <span class="rotate-bg"></span>
+            <span class="rotate-bg2"></span>
+
+            <div class="form-box login">
+                <h2 class="title animation" style="--i:0; --j:21">Login</h2>
+                <form action="/loginData/" method="post" role="form">
+                    {% csrf_token %}
+
+                    <div class="input-box animation" style="--i:1; --j:22">
+                        <input type="text" required name="aid" value="aid">
+                        <label for="aid">Username</label>
+                        <i class='bx bxs-user'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:2; --j:23">
+                        <input type="password" required name="passwd" value="passwd">
+                        <label for="passwd">Password</label>
+                        <i class='bx bxs-lock-alt'></i>
+                        <a href="#">Forgot Password</a>
+                    </div>
+                    <button type="submit" class="btn animation" style="--i:3; --j:24">Login</button>
+                    <div class="linkTxt animation" style="--i:5; --j:25">
+                        <p>Don't have an account? <a href="#" class="register-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-text login">
+                <h2 class="animation" style="--i:0; --j:20">Welcome Back!</h2>
+                <p class="animation" style="--i:1; --j:21">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,rem?
+                </p>
+            </div>
+
+
+
+
+
+
+
+            <div class="form-box register">
+
+                <h2 class="title animation" style="--i:17; --j:0">Sign Up</h2>
+
+                <form action="#">
+
+                    <div class="input-box animation" style="--i:18; --j:1">
+                        <input type="text" required>
+                        <label for="">Username</label>
+                        <i class='bx bxs-user'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:19; --j:2">
+                        <input type="email" required>
+                        <label for="">Email</label>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:20; --j:3">
+                        <input type="password" required>
+                        <label for="">Password</label>
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+
+                    <button type="submit" class="btn animation" style="--i:21;--j:4">Sign Up</button>
+
+                    <div class="linkTxt animation" style="--i:22; --j:5">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="info-text register">
+                <h2 class="animation" style="--i:17; --j:0;">Welcome Back!</h2>
+                <p class="animation" style="--i:18; --j:1;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,rem?
+                </p>
+            </div>
+
+        </div>
+    </div>
+                <div class="office pt-5">
+                    <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="sub-style">
+                            <h5 class="sub-title text-primary px-3">Worlwide Offices</h5>
+                        </div>
+                        <h1 class="display-5 mb-4">Explore Our Office Worldwide</h1>
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="office-item p-4">
+                                <div class="office-img mb-4">
+                                    <img src="img/office-2.jpg" class="img-fluid w-100 rounded" alt="">
+                                </div>
+                                <div class="office-content d-flex flex-column">
+                                    <h4 class="mb-2">Australia</h4>
+                                    <a href="#" class="text-secondary fs-5 mb-2">+123.456.7890</a>
+                                    <a href="#" class="text-muted fs-5 mb-2">travisa@example.com</a>
+                                    <p class="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="office-item p-4">
+                                <div class="office-img mb-4">
+                                    <img src="img/office-1.jpg" class="img-fluid w-100 rounded" alt="">
+                                </div>
+                                <div class="office-content d-flex flex-column">
+                                    <h4 class="mb-2">Canada</h4>
+                                    <a href="#" class="text-secondary fs-5 mb-2">(012) 0345 6789</a>
+                                    <a href="#" class="text-muted fs-5 mb-2">travisa@example.com</a>
+                                    <p class="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="office-item p-4">
+                                <div class="office-img mb-4">
+                                    <img src="img/office-3.jpg" class="img-fluid w-100 rounded" alt="">
+                                </div>
+                                <div class="office-content d-flex flex-column">
+                                    <h4 class="mb-2">United Kingdom</h4>
+                                    <a href="#" class="text-secondary fs-5 mb-2">01234.567.890</a>
+                                    <a href="#" class="text-muted fs-5 mb-2">travisa@example.com</a>
+                                    <p class="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                            <div class="office-item p-4">
+                                <div class="office-img mb-4">
+                                    <img src="img/office-4.jpg" class="img-fluid w-100 rounded" alt="">
+                                </div>
+                                <div class="office-content d-flex flex-column">
+                                    <h4 class="mb-2">India</h4>
+                                    <a href="#" class="text-secondary fs-5 mb-2">+123.45.67890</a>
+                                    <a href="#" class="text-muted fs-5 mb-2">travisa@example.com</a>
+                                    <p class="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+<script src="../static/rscript.js"></script>
+{% endblock %}

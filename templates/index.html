@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/tstyle.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="static/img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>EVO TOUR</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.wrapper i {
+    height: 50px;
+    width: 50px;
+    background: rgb(118, 233, 118);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 20%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+}
+
+.wrapper i:first-child {
+    left: -22px;
+
+}
+
+.wrapper i:last-child {
+    right: -22px;
+
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 340px;
+    list-style: none;
+    background: #fff;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    display: flex;
+    cursor: pointer;
+    width: 98%;
+    padding-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card .img {
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+   
+
+}
+
+.card .img img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+}
+
+.card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+}
+
+.card span {
+    color: #6a6d78;
+    font-size: 1.31rem;
+
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+
+    }
+}
+.scrimg{
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    z-index: 999;
+    color: white;
+    padding-left: 5%;
+}
+.scroll-down-icon {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    
+    transform: translateX(-50%);
+    width: 40px;
+    animation: down ease 1s infinite;
+}
+
+@keyframes down {
+    from {
+        bottom: 10%
+    }
+    to {
+        bottom: 5%
+    }
+}
+.sss{
+    color: white;
+    font-size: 30px;
+}
+    </style>
+</head>
+
+<body>
+{% load static  %}
+
+
+
+        <div class="slider" id="slider" style="--img-prev:url(https://lh3.googleusercontent.com/aC9nyW5dhaYFmWD8fcf8DApjpH08eHEkbCHqmUPHRQ5T3jK-QyNKZYVMehmrvyPdEA_KxWvgZ3_kyOOYOAv99Ow3UoKSvEloleVKGSfLOwOyDV3Q6Dwi1G-NYoa9-t_ofmmskE6BYnVIOnIz2HWlMcijzIEwvKAL_R4z63DaLgG0z_OcGiSQHunwGAPXrBQUv42ZXuIMODq4zxDHczSxJ72b0-_udtdQK3JuT2X8nXCwFoF7GxmOpzXS0H5f50DuCbXoXcx-O7bgBMCXZdMpTxB27-wdXeLmxpYUySXgjSN2NAKmK16DmGLYvw5tMlrqwb8h4MJEEbXjP1pjPxXsahb7UZseEGyn80uLjATANJvusyJWCtzkkxYXPz-yI1rDvfEJKe2eyA-5AvFlzFBSwBMASn8f7mXinUrXMMREkJQjoi89NfZ91G7253OEVQOqcWxddiYtcHCO5v6Pl3QfV2SUTWXgggscDSY2ezjSPpYERNTXnIM_aCyWmIG7ybrfqOB0eVYBAgynyuPVbjd4KuZWZq2Dfu33HX1RuPKglbOuZGD1QbpJnruvUVkAmjDXI40ENN7X=w1600-h766);">
+                  <div class="scrimg"><h1 style="margin-left: 5px"><a href="/home/"><img src="../static/imge/down arrow.png" class="scroll-down-icon" alt="scroll down indicator"></a></h1></div>
+
+            <div class="slider__content" id="slider-content">
+
+                <div class="slider__images">
+                    <div class="slider__images-item slider__images-item--active" data-id="1"><img src="static/img/bidge.jpg" /></div>
+                    <div class="slider__images-item" data-id="2"><img src="static/img/brig.jpg" /></div>
+                    <div class="slider__images-item" data-id="3"><img src="static/img/country.jpg" /></div>
+                    <div class="slider__images-item" data-id="4"><img src="static/img/golden.avif" /></div>
+                    <div class="slider__images-item" data-id="5"><img src="static/img/gate.webp" /></div>
+                    
+                </div>
+                <div class="slider__text">
+                    <div class="slider__text-item slider__text-item--active" data-id="1">
+                        <div class="slider__text-item-head">
+                            <h3>River Bridge</h3>
+                        </div>
+                        <div class="slider__text-item-info">
+                            <p>“And into the forest I go, to lose my mind and find my soul”</p>
+                        </div>
+                    </div>
+                    <div class="slider__text-item" data-id="2">
+                        <div class="slider__text-item-head">
+                            <h3>Bridge</h3>
+                        </div>
+                        <div class="slider__text-item-info">
+                            <p>“Mist to mist, drops to drops. For water thou art, and unto water shalt thou return”</p>
+                        </div>
+                    </div>
+                    <div class="slider__text-item" data-id="3">
+                        <div class="slider__text-item-head">
+                            <h3>City</h3>
+                        </div>
+                        <div class="slider__text-item-info">
+                            <p>“Go to the edge of the cliff and jump off. Build your wings on the way down”</p>
+                        </div>
+                    </div>
+                    <div class="slider__text-item" data-id="4">
+                        <div class="slider__text-item-head">
+                            <h3>Golden Temple</h3>
+                        </div>
+                        <div class="slider__text-item-info">
+                            <p>“What are men to rocks and mountains?”</p>
+                        </div>
+                    </div>
+                    <div class="slider__text-item" data-id="5">
+                        <div class="slider__text-item-head">
+                            <h3>Gate</h3>
+                        </div>
+                        <div class="slider__text-item-info">
+                            <p>“On all the peaks lies peace”</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="slider__nav">
+                <div class="slider__nav-arrows">
+                    <div class="slider__nav-arrow slider__nav-arrow--left" id="left">to left</div>
+                    <div class="slider__nav-arrow slider__nav-arrow--right" id="right">to right</div>
+                </div>
+                <div class="slider__nav-dots" id="slider-dots">
+                    <div class="sss">Click Here to Explore..</div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        <!-- main Body -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js " integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy " crossorigin="anonymous "></script>
+    <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js "></script>
+    <script src="static/tscript.js "></script>
+</body>
+
+</html>
